@@ -14,7 +14,7 @@ search_space = [[2,3,0,3]]
 # the dict of results
 results = {}
 
-while search_num <= 500:
+while search_num <= 5000000:
 #    print("search_num:", search_num)
     for tri_list in search_space:
 #        print("tri_list:", tri_list)
@@ -45,12 +45,64 @@ while search_num <= 500:
 smallest = {}
 
 # Note: this would work except that some numbers are the smallest of more than one trapezoidal category. For example, 45 is the smallest number that can be written as four consecutive integers and five consecutive integers.  Goign to need to rewrite this. 
-trap_count = 1
-for result, count in results.items():
+#trap_count = 1
+#for result, count in results.items():
 #    print("result,count:", result, count)
-    if count == trap_count:
-        smallest.update({count : result})
-        trap_count +=1
-        continue
+#    if count == trap_count:
+#        smallest.update({count : result})
+#        trap_count +=1
+#        continue
  
+#print(smallest)
+
+
+# Note: this (maybe) works for "exclusive" counting. ie, 15 should be counted as 3,4, and 5x trapezoidal. 
+#smallest = {}
+#current_lowest = 1
+#for result, count in results.items():
+#    if count == current_lowest:
+#        smallest.update({count: result})
+#        current_lowest += 1
+#print(smallest)
+
+
+# maybe this will work?
+smallest= {}
+current_lowest = 1
+for result, count in results.items():
+#    print(result, ":", count)
+    while count >= current_lowest:
+        smallest.update({current_lowest : result})
+        current_lowest +=1
+#        print("current_lowest", current_lowest)
+    #current_lowest +=1
 print(smallest)
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
